@@ -45,7 +45,7 @@ const changeLang = (selectedLang) => {
 //------- APP --------------
 
   
-  let state = store.getState();
+let state = store.getState();
   
   ReactDOM.render(
     <React.StrictMode>

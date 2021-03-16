@@ -14,7 +14,6 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
   return (
   <>
     <select id="lang" name="lang" onChange = {handleChange}>
-      <option>Language</option>
       <option value="EN">English</option>
       <option value="EO">Esperanto</option>
       <option value="FR">French</option>

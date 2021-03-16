@@ -11,11 +11,12 @@ const score = (state, {player}) => {
 
 //UPDATE WHICH PLAYER IS SERVING
 const server = (state) => {
-  
+    let sumScores = state.player1 + state.player2;
+   
     if(state.player1 >= 20 && state.player2 >=20){
       //start to alternate sever between players when both scores are over 20
-  
-      let toServe = state.server === 1 ? 2 : 1;
+      
+      let toServe = Math.floor(sumScores / 2) % 2 === 0 ? 1 : 2;
   
       return {
         ...state,
@@ -24,8 +25,7 @@ const server = (state) => {
   
     } else {
       //else alternate server every 5 points 
-  
-      let sumScores = state.player1 + state.player2;
+
       let toServe = Math.floor(sumScores / 5) % 2 === 0 ? 1 : 2;
   
       return {
