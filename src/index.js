@@ -140,7 +140,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
   initial,
-  composeEnhancers() //taken out persist state whilst fidlling with languages, need to add back in!
+  composeEnhancers(persistState())
 );
 
 
