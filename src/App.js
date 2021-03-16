@@ -1,6 +1,6 @@
 import ScoreCard from './components/ScoreCard'
 
-const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleReset, winner, history}) => (
+const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNewGame, handleReset, winner, history}) => (
   <>
       {/* header */}
       <header className="jumbotron mt-4 mb-0">
@@ -28,8 +28,8 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleRe
 
       <hr />
 
-      { /* reset button */}
-      <button className="btn btn-danger" onClick = {handleReset}>Reset</button>
+      { /* New Game button - Resets Scores */}
+      <button className="btn btn-warning" onClick = {handleNewGame}>New Game</button>
 
       {/* Previous Games History */}
       <table className="table mt-4">
@@ -57,6 +57,9 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleRe
             })}
         </tbody>
       </table>
+
+      { /* Resets all state */}
+      <button className="btn btn-danger" onClick = {handleReset}> Reset </button>
   </>
 );
 

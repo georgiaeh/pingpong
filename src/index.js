@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 //import what we need from Redux
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
+import persistState from "redux-localstorage";
 
 // ------ INITIAL STATE -----------------
 //Object will create the inital values for state when 
@@ -18,10 +19,10 @@ const initial = {
 
 //--------- REDUCER FUNCTIONS -----------
 //UPDATE PLAYER SCORES
-const score = (state, action) => {
+const score = (state, {player}) => {
   return {
       ...state,
-      [action.player] : state[action.player] + 1
+      [player] : state[player] + 1
     };
 }
 
@@ -67,7 +68,9 @@ const games = (state, winner) => {
 
 //DETERMINE IF THERE IS A WINNER
 const winner = (state) => {
-  if( (state.player1 >= 21) && (state.player1 > (state.player2 + 1))){
+
+  //tests if player 1 has won
+  if( (state.player1 >= 21) && (state.player1 > (state.player2 + 1)) ){
 
     //create object to add to state.games array
     let game = games(state, 1);
@@ -79,6 +82,8 @@ const winner = (state) => {
       games: [...state.games, game]
     }
   }
+
+  //tests if player 2 has won
   if( (state.player2 >= 21) && (state.player2 > (state.player1 + 1)) ){
 
     let game = games(state, 2);
@@ -89,6 +94,8 @@ const winner = (state) => {
       games: [...state.games, game]
     }
   }
+
+  //if no player has won
   return state;
   
 }
@@ -108,8 +115,9 @@ const reset = (state) => {
 //reducer will update state based on action type given in dispatch function
 const reducer = (state, action) =>{
   switch(action.type) {
-    case "INCREMENT": return winner(server(score( state, action )));
-    case "RESET": return reset(state);
+    case 'SCORE': return winner(server(score( state, action )));
+    case 'NEWGAME': return reset(state);
+    case 'RESET' : return initial;
     default: return state;
   }
 }
@@ -117,24 +125,26 @@ const reducer = (state, action) =>{
 
 // --------- STORE ----------------
 //create Store and initialise will initial state
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
   initial,
-  window.__REDUX_DEVTOOLS_EXTENSION__
-  && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  );
+  composeEnhancers(persistState())
+);
 
 
 // --------- EVENT HANDLERS ----------------
 //Event handlers to be passed in to App through props
-//update player scores
 const P1Scores = () => {
-  store.dispatch( { type: 'INCREMENT', player: "player1"});
+  store.dispatch( { type: 'SCORE', player: "player1"});
 }
 const P2Scores = () => {
-  store.dispatch( { type: 'INCREMENT', player: "player2"});
+  store.dispatch( { type: 'SCORE', player: "player2"});
 } 
-const resetScores = () => {
+const newGame = () => {
+  store.dispatch( { type: 'NEWGAME'})
+}
+const resetGame = () => {
   store.dispatch( { type: 'RESET'})
 }
 
@@ -152,7 +162,8 @@ const render = () => {
         server = {state.server}
         handleP1Score = {P1Scores}
         handleP2Score = {P2Scores}
-        handleReset = {resetScores}
+        handleNewGame = {newGame}
+        handleReset = {resetGame}
         winner = {state.winner}
         history = {state.games}
       />

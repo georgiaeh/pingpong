@@ -9,7 +9,9 @@ const ScoreCard = ( {player, score, handleScore, server, winner}) => {
                       <p className="card-text display-1">{score}</p>
                   </div>
                   <div className="card-footer">
-                      { winner === 0 ? <button  className="form-control btn btn-success" onClick={handleScore}>+</button> : <button  className="form-control btn btn-success" onClick={handleScore} disabled>+</button> }
+                      { winner === 0 ? 
+                        <button  className="form-control btn btn-success" onClick={handleScore}>+</button> 
+                        : <button  className="form-control btn btn-success" disabled>+</button> }
                   </div>
               </div>
           </div>
