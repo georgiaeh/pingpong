@@ -23,7 +23,7 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
           />
           <label 
             className="form-check-label" 
-            htmlFor="flexCheckDefault" 
+            htmlFor="flexSwitchCheckDefault" 
             >
             Esperanto?
           </label>
@@ -57,7 +57,7 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
       <h2 className="alert alert-success">{ dictionary.player} { winner === 1 ? 1 : 2} {dictionary.wins}!</h2>}
 
       { /* New Game button - Resets Scores */}
-      <button className="btn btn-warning" onClick = {handleNewGame}>{dictionary.new} {dictionary.game}</button>
+      <button className="btn btn-warning" onClick = {handleNewGame}> {dictionary.new} {dictionary.game}</button>
 
       {/* Previous Games History */}
       <table className="table mt-4">
