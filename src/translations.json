@@ -1,0 +1,18 @@
+{
+    "EN": {
+        "player" : "Player",
+        "serving" : "Serving",
+        "reset": "Reset",
+        "new": "New",
+        "game": "Game",
+        "wins": "wins"
+    },
+    "EO": {
+        "player" : "Ludanto",
+        "serving" : "Servas",
+        "reset": "Restarigi",
+        "new": "Nova",
+        "game": "Ludo",
+        "wins": "Venkoj"
+    }
+}

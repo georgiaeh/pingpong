@@ -14,7 +14,8 @@ const initial = {
   player2: 0,
   server: 1,
   winner: 0,
-  games: []
+  games: [],
+  lang: "EN"
 };
 
 //--------- REDUCER FUNCTIONS -----------
@@ -111,6 +112,14 @@ const reset = (state) => {
     }
 }
 
+//CHANGE LANGUAGE 
+const lang = (state) => {
+  return {
+    ...state,
+    lang: state.lang === "EN" ? "EO" : "EN"
+  }
+}
+
 // -------- REDUCER ------------------
 //reducer will update state based on action type given in dispatch function
 const reducer = (state, action) =>{
@@ -118,6 +127,7 @@ const reducer = (state, action) =>{
     case 'SCORE': return winner(server(score( state, action )));
     case 'NEWGAME': return reset(state);
     case 'RESET' : return initial;
+    case 'LANG' : return lang(state);
     default: return state;
   }
 }
@@ -129,7 +139,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
   initial,
-  composeEnhancers(persistState())
+  composeEnhancers() //taken out persist state whilst fidlling with languages, need to add back in!
 );
 
 
@@ -146,6 +156,9 @@ const newGame = () => {
 }
 const resetGame = () => {
   store.dispatch( { type: 'RESET'})
+}
+const changeLang = () => {
+  store.dispatch( {type: 'LANG'})
 }
 
 
@@ -166,6 +179,8 @@ const render = () => {
         handleReset = {resetGame}
         winner = {state.winner}
         history = {state.games}
+        lang = {state.lang}
+        handleLang = {changeLang}
       />
     </React.StrictMode>,
     document.getElementById('root')
