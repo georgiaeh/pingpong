@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
-import Winner from './Winner';
+import Button from './Button';
 
 const mapStateToProps = ( state ) => {
     return {
         lang: state.lang,
-        winner: state.winner
     }
 }
 
-export default connect(mapStateToProps)(Winner);
+export default connect(mapStateToProps)(Button);

@@ -37,8 +37,8 @@ const newGame = () => {
 const resetGame = () => {
   store.dispatch( { type: 'RESET'})
 }
-const changeLang = () => {
-  store.dispatch( {type: 'LANG'})
+const changeLang = (selectedLang) => {
+  store.dispatch( {type: 'LANG', lang: selectedLang})
 }
 
 

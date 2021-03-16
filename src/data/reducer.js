@@ -95,10 +95,10 @@ const reset = (state) => {
 }
 
 //CHANGE LANGUAGE 
-const lang = (state) => {
+const lang = (state, action) => {
     return {
       ...state,
-      lang: state.lang === "EN" ? "EO" : "EN"
+      lang: action.lang
     }
 }
 
@@ -109,7 +109,7 @@ const reducer = (state, action) =>{
       case 'SCORE': return winner(server(score( state, action )));
       case 'NEWGAME': return reset(state);
       case 'RESET' : return initial;
-      case 'LANG' : return lang(state);
+      case 'LANG' : return lang(state, action);
       default: return state;
     }
   }

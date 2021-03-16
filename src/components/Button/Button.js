@@ -1,7 +1,11 @@
-const Button = ( {handleClick, buttonText, style} ) => {
+import * as translations from '../../translations.json';
+
+const Button = ( {handleClick, lang, buttonText} ) => {
+
+    const dictionary = translations.default[lang]
 
     return (
-        <button className="btn btn-warning" onClick = {handleClick}> {buttonText}</button> 
+        <button className="btn btn-warning" onClick = {handleClick}> {dictionary[buttonText]}</button> 
     )
 }
 

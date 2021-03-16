@@ -14,5 +14,13 @@
         "new_game": "Nova Ludo",
         "game" : "Ludo",
         "wins": "Venkoj"
+    },
+    "FR": {
+        "player" : "Joueuse",
+        "serving" : "Service",
+        "reset": "Réinitialiser",
+        "new_game": "Nouveau Jeu",
+        "game" : "Jeu",
+        "wins": "Gagne"
     }
 }

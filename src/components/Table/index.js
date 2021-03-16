@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import Winner from './Winner';
+import Table from './Table';
 
 const mapStateToProps = ( state ) => {
     return {
         lang: state.lang,
-        winner: state.winner
+        history: state.games
     }
 }
 
-export default connect(mapStateToProps)(Winner);
+export default connect(mapStateToProps)(Table);
