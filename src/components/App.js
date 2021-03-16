@@ -1,5 +1,7 @@
-import ScoreCard from './components/ScoreCard'
-import * as translations from './translations.json';
+import ScoreCard from './ScoreCard/ScoreCard';
+import Button from './Button/Button';
+import Winner from './Winner/Winner';
+import * as translations from '../translations.json';
 
 const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNewGame, handleReset, winner, history, lang, handleLang}) =>{
 
@@ -53,11 +55,13 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
           lang = { lang }/>
       </div>
 
-      { winner === 0 ? null :
-      <h2 className="alert alert-success">{ dictionary.player} { winner === 1 ? 1 : 2} {dictionary.wins}!</h2>}
+      <Winner lang = { lang } winner = { winner } />
 
       { /* New Game button - Resets Scores */}
-      <button className="btn btn-warning" onClick = {handleNewGame}> {dictionary.new} {dictionary.game}</button>
+      <Button 
+        handleClick = {handleNewGame} 
+        buttonText = { dictionary.new_game }
+      />
 
       {/* Previous Games History */}
       <table className="table mt-4">
@@ -87,7 +91,10 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
       </table>
 
       { /* Resets all state */}
-      <button className="btn btn-danger" onClick = {handleReset}> {dictionary.reset} </button>
+      <Button 
+        handleClick = {handleReset} 
+        buttonText = { dictionary.reset }
+      />
   </>
 );
 }

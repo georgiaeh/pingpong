@@ -1,4 +1,4 @@
-import * as translations from '../translations.json';
+import * as translations from '../../translations.json';
 
 const ScoreCard = ( {player, score, handleScore, server, winner, lang}) => {
 

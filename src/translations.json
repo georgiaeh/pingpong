@@ -3,16 +3,16 @@
         "player" : "Player",
         "serving" : "Serving",
         "reset": "Reset",
-        "new": "New",
-        "game": "Game",
+        "new_game": "New Game",
+        "game" : "Game",
         "wins": "wins"
     },
     "EO": {
         "player" : "Ludanto",
         "serving" : "Servas",
         "reset": "Restarigi",
-        "new": "Nova",
-        "game": "Ludo",
+        "new_game": "Nova Ludo",
+        "game" : "Ludo",
         "wins": "Venkoj"
     }
 }
