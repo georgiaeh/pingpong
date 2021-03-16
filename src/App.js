@@ -18,7 +18,7 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
           <input className="form-check-input" 
             type="checkbox" 
             id="flexSwitchCheckDefault"    
-            onChange = {handleLang}
+            onChange = {handleCheck}
             checked= { checked }
           />
           <label 

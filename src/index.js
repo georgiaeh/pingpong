@@ -104,6 +104,7 @@ const winner = (state) => {
 //RESET SCORES, KEEP GAMES HISTORY
 const reset = (state) => {
   return {
+    ...state,
       player1: 0,
       player2: 0,
       server: 1,
