@@ -1,23 +1,19 @@
+import LangSelect from './LangSelect';
 import Player1 from './ScoreCard/Player1';
 import Player2 from './ScoreCard/Player2';
-import Button from './Button/index.js';
+import ButtonReset from './Button/ButtonReset.js';
+import ButtonNG from './Button/ButtonNewGame';
 import Winner from './Winner/index.js';
 import Table from './Table/index.js'
 
-const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNewGame, handleReset, winner, history, lang, handleLang}) =>{
+const App = ( { player1, player2, server, handleP1Score, handleP2Score, winner, history, lang, handleLang}) =>{
 
-  const handleChange = (e) => {
-    let selectedLang = e.target.value;
-    handleLang(selectedLang)
-  }
+  
 
   return (
   <>
-    <select id="lang" name="lang" onChange = {handleChange}>
-      <option value="EN">English</option>
-      <option value="EO">Esperanto</option>
-      <option value="FR">French</option>
-    </select>
+   
+   <LangSelect />
 
     {/* header */}
     <header className="jumbotron mt-4 mb-0">  
@@ -26,21 +22,14 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
 
     {/* scores */}
     <div className="row mb-4">
-      <Player1 
-        player = { 1 } 
-        handleScore = { handleP1Score } 
-        />
-      <Player2
-        player = { 2 } 
-        handleScore = { handleP2Score } 
-      />
+      <Player1 player = { 1 } />
+      <Player2 player = { 2 } />
     </div>
 
     <Winner />
 
     { /* New Game button - Resets Scores */}
-    <Button 
-      handleClick = {handleNewGame} 
+    <ButtonNG
       buttonText = "new_game"
     />
 
@@ -48,8 +37,7 @@ const App = ( { player1, player2, server, handleP1Score, handleP2Score, handleNe
     <Table  />
 
     { /* Resets all state */}
-    <Button 
-      handleClick = {handleReset} 
+    <ButtonReset
       buttonText = "reset"
     />
   </>
