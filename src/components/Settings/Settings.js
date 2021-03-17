@@ -8,8 +8,8 @@ const Settings = ( { lang, handleSettings } ) => {
 
     const [p1Name, setP1Name] = useState("");
     const [p2Name, setP2Name] = useState("");
-    const [winningScore, setWinningScore] = useState(21);
-    const [altServe, setAltServe] = useState(5);
+    const [winningScore, setWinningScore] = useState("21");
+    const [altServe, setAltServe] = useState("5");
 
     const handleP1Name = (e) => { 
         setP1Name(e.currentTarget.value)

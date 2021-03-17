@@ -5,8 +5,8 @@ const mapStateToProps = ( state ) => {
     return {
         lang: state.lang,
         winner: state.winner,
-        p1Name: state.p1Name,
-        p2Name: state.p2Name,
+        p1Name: state.settings.p1Name,
+        p2Name: state.settings.p2Name,
 
     }
 }

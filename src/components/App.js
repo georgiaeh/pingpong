@@ -7,7 +7,7 @@ import ButtonNG from './Button/ButtonNewGame';
 import Winner from './Winner';
 import Table from './Table'
 
-const App = ( { settings }) =>{
+const App = ( { gamestart }) =>{
 
   return (
   <>
@@ -19,7 +19,7 @@ const App = ( { settings }) =>{
     </header>
 
 
-    {settings? 
+    {gamestart ? 
       <>
       <div className="row mb-4">
         <Player1 player = { 1 } />

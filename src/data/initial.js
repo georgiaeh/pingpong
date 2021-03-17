@@ -8,11 +8,14 @@ const initial = {
     winner: 0,
     games: [],
     lang: "EN",
-    settings: false,
-    p1Name: "",
-    p2Name: "",
-    winningScore: 21,
-    altServe: 5
+    gamestart: false,
+    settings : {
+      p1Name: "",
+      p2Name: "",
+      winningScore: 21,
+      altServe: 5
+    }
+    
   };
 
   export default initial;

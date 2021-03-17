@@ -22,47 +22,11 @@ const store = createStore(
   composeEnhancers(persistState())
 );
 
-
-// --------- EVENT HANDLERS ----------------
-//Event handlers to be passed in to App through props
-const P1Scores = () => {
-  store.dispatch( { type: 'SCORE', player: "player1"});
-}
-const P2Scores = () => {
-  store.dispatch( { type: 'SCORE', player: "player2"});
-} 
-const newGame = () => {
-  store.dispatch( { type: 'NEWGAME'})
-}
-const resetGame = () => {
-  store.dispatch( { type: 'RESET'})
-}
-const changeLang = (selectedLang) => {
-  store.dispatch( {type: 'LANG', lang: selectedLang})
-}
-
-
-//------- APP --------------
-
-  
-let state = store.getState();
   
   ReactDOM.render(
     <React.StrictMode>
       <Provider store = { store }>
-        <App 
-          player1 = {state.player1}
-          player2 = {state.player2}
-          server = {state.server}
-          handleP1Score = {P1Scores}
-          handleP2Score = {P2Scores}
-          handleNewGame = {newGame}
-          handleReset = {resetGame}
-          winner = {state.winner}
-          history = {state.games}
-          lang = {state.lang}
-          handleLang = {changeLang}
-        />
+        <App />
       </Provider>
     </React.StrictMode>,
     document.getElementById('root')
