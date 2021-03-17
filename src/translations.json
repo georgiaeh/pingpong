@@ -5,7 +5,10 @@
         "reset": "Reset",
         "new_game": "New Game",
         "game" : "Game",
-        "wins": "wins"
+        "wins": "wins",
+        "name": "Name",
+        "winning": "Winning Score",
+        "alt_serve": "Alternate server every"
     },
     "EO": {
         "player" : "Ludanto",
@@ -13,6 +16,9 @@
         "reset": "Restarigi",
         "new_game": "Nova Ludo",
         "game" : "Ludo",
-        "wins": "Venkoj"
+        "wins": "Venkoj",
+        "name": "Nomo",
+        "winning": "Gajnanta Poentaro",
+        "alt_serve": "Alterna servi ĉiun"
     }
 }

@@ -4,7 +4,9 @@ import Table from './Table';
 const mapStateToProps = ( state ) => {
     return {
         lang: state.lang,
-        history: state.games
+        history: state.games,
+        p1Name: state.p1Name,
+        p2Name: state.p2Name
     }
 }
 

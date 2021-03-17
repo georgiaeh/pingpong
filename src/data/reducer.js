@@ -24,9 +24,9 @@ const server = (state) => {
       }
   
     } else {
-      //else alternate server every 5 points 
+      //else alternate server by number of serves set in settings
 
-      let toServe = Math.floor(sumScores / 5) % 2 === 0 ? 1 : 2;
+      let toServe = Math.floor(sumScores / state.altServe) % 2 === 0 ? 1 : 2;
   
       return {
       ...state,
@@ -53,7 +53,7 @@ const games = (state, winner) => {
 const winner = (state) => {
 
     //tests if player 1 has won
-    if( (state.player1 >= 21) && (state.player1 > (state.player2 + 1)) ){
+    if( (state.player1 >= state.winningScore) && (state.player1 > (state.player2 + 1)) ){
 
         //create object to add to state.games array
         let game = games(state, 1);
@@ -67,7 +67,7 @@ const winner = (state) => {
     }
 
     //tests if player 2 has won
-    if( (state.player2 >= 21) && (state.player2 > (state.player1 + 1)) ){
+    if( (state.player2 >= state.winningScore) && (state.player2 > (state.player1 + 1)) ){
 
         let game = games(state, 2);
 
@@ -102,6 +102,18 @@ const lang = (state, action) => {
     }
 }
 
+//UPDATE SETTINGS
+const updateSettings = (state, action) => {
+  return {
+    ...state,
+    settings: true,
+    p1Name: action.settings.p1Name,
+    p2Name: action.settings.p2Name,
+    winningScore: action.settings.winningScore,
+    altServe: action.settings.altServe
+  }
+}
+
 // -------- REDUCER ------------------
 //reducer will update state based on action type given in dispatch function
 const reducer = (state, action) =>{
@@ -110,6 +122,7 @@ const reducer = (state, action) =>{
       case 'NEWGAME': return reset(state);
       case 'RESET' : return initial;
       case 'LANG' : return lang(state, action);
+      case 'SETTINGS': return updateSettings(state, action)
       default: return state;
     }
   }

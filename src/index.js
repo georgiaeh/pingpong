@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './components';
 
 //import what we need from Redux
 import { createStore, compose } from 'redux';

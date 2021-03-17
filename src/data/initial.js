@@ -7,7 +7,12 @@ const initial = {
     server: 1,
     winner: 0,
     games: [],
-    lang: "EN"
+    lang: "EN",
+    settings: false,
+    p1Name: "",
+    p2Name: "",
+    winningScore: 21,
+    altServe: 5
   };
 
   export default initial;

@@ -1,6 +1,6 @@
 import * as translations from '../../translations.json';
 
-const Table = ({ lang, history }) => {
+const Table = ({ lang, history, p1Name, p2Name }) => {
 
     const dictionary = translations.default[lang]
 
@@ -9,8 +9,8 @@ const Table = ({ lang, history }) => {
         <thead>
         <tr>
             <th scope="col"> {dictionary.game} </th>
-            <th scope="col"> {dictionary.player} 1 </th>
-            <th scope="col"> {dictionary.player} 2 </th>
+            <th scope="col"> {p1Name} </th>
+            <th scope="col"> {p2Name}  </th>
         </tr>
         </thead>
         <tbody>

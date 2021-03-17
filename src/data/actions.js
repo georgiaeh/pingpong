@@ -7,3 +7,5 @@
   export const reset = () => ({type: 'RESET'})
 
   export const lang = (lang) => ({type: 'LANG', lang: lang})
+
+  export const settings = (data) => ({type: 'SETTINGS', settings: data})
