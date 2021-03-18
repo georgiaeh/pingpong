@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Settings from './Settings';
-import { settings } from '../../data/actions/state'
+import { postNewGame }  from '../../data/actions/api';
+
 
 const mapStateToProps = ( state ) => {
     return { 
@@ -11,7 +12,7 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = (dispatch) => {
 
     return {
-        handleSettings: (data) => dispatch(settings(data))
+        handleSettings: (data) => dispatch(postNewGame(data))
     }
 }
 

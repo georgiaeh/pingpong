@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './components';
 
 //import what we need from Redux
-import { createStore, compose } from 'redux';
-import persistState from "redux-localstorage";
-
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+// import persistState from "redux-localstorage";
 //importing from react-redux
 import { Provider } from "react-redux";
 
@@ -19,7 +19,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
   initial,
-  composeEnhancers()
+  composeEnhancers(applyMiddleware(thunk))
 );
 
   

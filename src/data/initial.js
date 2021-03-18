@@ -9,6 +9,7 @@ const initial = {
     games: [],
     lang: "EN",
     gamestart: false,
+    gameID: null,
     settings : {
       p1Name: "",
       p2Name: "",

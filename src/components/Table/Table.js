@@ -1,8 +1,19 @@
+import { useEffect } from 'react';
 import * as translations from '../../translations.json';
 
-const Table = ({ lang, history, p1Name, p2Name }) => {
+const Table = ({ winner, lang, history, p1Name, p2Name , handleLoad, handleDelete}) => {
 
     const dictionary = translations.default[lang]
+
+    useEffect( () => {
+        handleLoad();
+        // eslint-disable-next-line
+    }, [winner, history.length])
+
+    const handleClick = (e) => {
+        let gameID = e.currentTarget.id
+       handleDelete(gameID)
+    }
 
     return (
         <table className="table mt-4">
@@ -14,10 +25,10 @@ const Table = ({ lang, history, p1Name, p2Name }) => {
         </tr>
         </thead>
         <tbody>
-        {history.map( (game, index) => {
+        {history.filter( (game) => game.complete === true).map( (game, index) => {
         return (
             <tr key={index}>
-            <th scope="row">{index+1}</th>
+            <th scope="row">{game.gameID}</th>
             <td 
                 className={ game.player_1.won ? "table-success" : "table-danger"} > 
                 {game.player_1.score} 
@@ -26,6 +37,7 @@ const Table = ({ lang, history, p1Name, p2Name }) => {
                 className={ game.player_2.won ? "table-success" : "table-danger"}>
                 {game.player_2.score} 
                 </td>
+                <td><button className="btn btn-light" onClick={handleClick} id={game.gameID}> x </button></td>
             </tr>)
             })}
         </tbody>

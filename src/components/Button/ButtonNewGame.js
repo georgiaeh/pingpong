@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Button from './Button';
-import { newGame } from '../../data/actions/state'
+import { postNewGame } from '../../data/actions/api'
 
 const mapStateToProps = ( state ) => {
     return {
@@ -11,7 +11,7 @@ const mapStateToProps = ( state ) => {
 const mapDispatchtoProps = (dispatch) => {
 
     return {
-        handleClick : () => dispatch(newGame())
+        handleClick : () => dispatch(postNewGame())
     }
 }
 
