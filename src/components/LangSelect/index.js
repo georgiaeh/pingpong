@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import LangSelect from './LangSelect'
-import { lang } from '../../data/actions'
+import { lang } from '../../data/actions/state'
 
 const mapDispatchToProps = (dispatch) => {
 
