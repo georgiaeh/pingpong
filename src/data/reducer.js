@@ -2,7 +2,7 @@ import initial from "./initial"
 
 //--------- REDUCER FUNCTIONS -----------
   //RESET SCORES, KEEP GAMES HISTORY
-const reset = (state) => {
+const resetReducer = (state) => {
     return {
         ...state,
         player1: 0,
@@ -14,7 +14,7 @@ const reset = (state) => {
 }
 
 //CHANGE LANGUAGE 
-const lang = (state, action) => {
+const langReducer = (state, action) => {
     return {
       ...state,
       lang: action.lang
@@ -25,6 +25,10 @@ const lang = (state, action) => {
 const updateSettings = (state, action) => {
   return {
     ...state,
+    player1: 0,
+    player2: 0,
+    winner: 0,
+    server: 1,
     gamestart: true,
     gameID: action.gameID,
     settings: action.settings
@@ -33,7 +37,7 @@ const updateSettings = (state, action) => {
 
 //UPDATE Scores, Server and Winner from API PATCH request
 
-const updateScores = (state, { payload }) => {
+const updateScoresReducer = (state, { payload }) => {
   return {
     ...state,
     player1: payload.player_1.score,
@@ -71,11 +75,14 @@ const gamesReducer = (state, { games }) => {
 
 const removeReducer = (state, action) => {
 
-  let gamesHistory = state.games.filter( (game) => game.gameID !== action.gameID)
-
+  // let gamesHistory = 
+  // console.log(gamesHistory)
+  console.log(action.gameID)
   return {
     ...state,
-    games: gamesHistory
+    games: state.games.filter( (game) => {
+      return game.gameID !== parseInt(action.gameID)
+    })
   }
 }
 
@@ -83,11 +90,11 @@ const removeReducer = (state, action) => {
 //reducer will update state based on action type given in dispatch function
 const reducer = (state, action) =>{
     switch(action.type) {
-      case 'NEWGAME': return reset(state);
+      case 'NEWGAME': return resetReducer(state);
       case 'RESET' : return initial;
-      case 'LANG' : return lang(state, action);
+      case 'LANG' : return langReducer(state, action);
       case 'SETTINGS': return updateSettings(state, action);
-      case 'UPDATE': return updateScores(state, action);
+      case 'UPDATE': return updateScoresReducer(state, action);
       case 'GAMES': return gamesReducer(state, action);
       case 'REMOVE': return removeReducer(state, action)
       default: return state;

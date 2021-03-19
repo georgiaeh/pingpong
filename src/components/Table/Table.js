@@ -6,9 +6,10 @@ const Table = ({ winner, lang, history, p1Name, p2Name , handleLoad, handleDelet
     const dictionary = translations.default[lang]
 
     useEffect( () => {
+        console.log(history.length)
         handleLoad();
         // eslint-disable-next-line
-    }, [winner, history.length])
+    }, [history.length])
 
     const handleClick = (e) => {
         let gameID = e.currentTarget.id

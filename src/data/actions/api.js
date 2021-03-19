@@ -17,7 +17,7 @@ export const postNewGame = (data) => {
     }
         : 
         (dispatch, getState) => {
-            let state=getState();
+            let state = getState();
         //create a new game after completing a game (from inside the app)
             axios.post("/games",{
                 player_1: state.settings.p1Name,
@@ -60,12 +60,10 @@ export const getGames = () => {
 }
 
 export const deleteGame = (gameID) => {
-  console.log(gameID)
-    return (dispatch) => {
 
-        axios.delete(`/games/${gameID}`).then( () => {
-            //state action to remove game from games history list
-            dispatch(removeDeletedGame(gameID))
-        })
+  axios.delete(`/games/${gameID}`);
+    return (dispatch) => {
+        dispatch(removeDeletedGame(gameID))
+        
     }
 }

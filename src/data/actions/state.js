@@ -34,6 +34,7 @@ export const updateGames = (data) => {
 }
 
 export const removeDeletedGame = (gameID) => {
+  console.log(gameID)
   return {
     type: 'REMOVE',
     gameID: gameID
