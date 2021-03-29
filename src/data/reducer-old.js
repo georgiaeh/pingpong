@@ -1,4 +1,6 @@
-//OLD REDUCER FROM THE PRE-API DAYS
+// -----------------------------------------------
+//-------OLD REDUCER FROM THE PRE-API DAYS -------
+// -----------------------------------------------
 
 import initial from "./initial"
 

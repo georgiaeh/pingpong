@@ -43,7 +43,7 @@ const updateScoresReducer = (state, { payload }) => {
     player1: payload.player_1.score,
     player2: payload.player_2.score,
     server: payload.player_1.serving ? 1 : 2,
-    winner: payload.player_1.won ? 1 : payload.player_2.won ? 2 : 0,
+    winner: payload.player_1.won ? 1 : (payload.player_2.won ? 2 : 0),
   }
 
 }
